@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --color-primary: #2F6B45; /* Forest Green */
+  --color-secondary: #F6EEDB; /* Beige */
+  --color-accent: #F4A261; /* Warm Orange */
+  --color-background: #FFFDF8; /* Cream */
+  --color-text: #2C2C2C; /* Dark Charcoal */
+  --radius-xl: 20px;
+  --shadow-soft: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Tailwind utilities will complement this */

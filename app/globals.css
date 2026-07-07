@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #FFC503;
+  --primary-dark: #E6B100;
+  --secondary: #0B0C10;
+  --accent: #FFC503;
+  --background: #FFFBF0;
+  --text: #0B0C10;
+  --text-muted: #4a4b4f;
+  --blue: #3b7dd8;
+  --maroon: #8b3a4a;
+  --cream: #FFFBF0;
+  --shadow: 0 8px 32px rgba(11, 12, 16, 0.08);
+  --shadow-hover: 0 16px 48px rgba(11, 12, 16, 0.14);
+  --radius: 20px;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-blue: var(--blue);
+  --color-maroon: var(--maroon);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-poppins);
+  --radius-card: var(--radius);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 197, 3, 0.3);
+  color: var(--text);
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.card-shadow {
+  box-shadow: var(--shadow);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: var(--shadow-hover);
+}

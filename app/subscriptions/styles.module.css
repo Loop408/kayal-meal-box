@@ -1,0 +1,75 @@
+/* app/subscriptions/styles.module.css */
+
+/* Premium dark theme with subtle glassmorphism */
+:root {
+  --bg-color: hsl(220, 12%, 12%);
+  --card-bg: hsla(0, 0%, 100%, 0.08);
+  --text-primary: hsl(210, 20%, 95%);
+  --text-secondary: hsl(210, 15%, 70%);
+  --accent: hsl(200, 85%, 55%);
+  --border: hsla(0, 0%, 100%, 0.12);
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--accent);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table th {
+  background: hsla(0, 0%, 100%, 0.04);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.row:hover {
+  background: hsla(0, 0%, 100%, 0.06);
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.5rem;
+  }
+}

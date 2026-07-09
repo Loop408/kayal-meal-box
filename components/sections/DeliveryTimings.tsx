@@ -8,8 +8,8 @@ import { motion } from "framer-motion";
 
 export function DeliveryTimings() {
   return (
-    <section className="section-padding bg-secondary/30">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="py-20 md:py-[100px] lg:py-[120px] bg-secondary/30">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeading
           eyebrow="Schedule"
           title="Delivery Timings"
@@ -24,10 +24,10 @@ export function DeliveryTimings() {
                 whileHover={{ y: -6 }}
               >
                 <ClockIllustration type={slot.icon} />
-                <h3 className="text-xl font-bold text-text mt-4 mb-2">
+                <h3 className="text-2xl md:text-[28px] leading-[1.3] font-bold text-text mt-4 mb-2">
                   {slot.label}
                 </h3>
-                <p className="text-lg font-semibold text-primary">{slot.time}</p>
+                <p className="text-base md:text-[18px] font-semibold text-primary">{slot.time}</p>
               </motion.div>
             </AnimateIn>
           ))}

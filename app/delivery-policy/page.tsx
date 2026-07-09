@@ -18,8 +18,8 @@ export default function DeliveryPolicy() {
         <h2 className="text-xl font-bold text-[#2F6B45]">Support Contacts</h2>
         <p>
           For delivery queries, reach us at:{" "}
-          <a href="mailto:info@evermeals.in" className="text-[#2F6B45] hover:underline font-semibold">
-            info@evermeals.in
+          <a href="mailto:kayalkeralarestaurant@gmail.com" className="text-[#2F6B45] hover:underline font-semibold">
+            kayalkeralarestaurant@gmail.com
           </a>
         </p>
       </section>

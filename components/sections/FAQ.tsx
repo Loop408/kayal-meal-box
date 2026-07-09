@@ -15,9 +15,15 @@ const faqList: FAQItem[] = [
     question: "What is Kayal Meal Box and how does the meal subscription work?",
     answer: (
       <>
-        Kayal Meal Box is a <strong>home-style tiffin and meal subscription service</strong> in Hyderabad. 
-        You choose a plan (2-day trial, weekly, or monthly), select lunch, dinner, or both, 
-        add your delivery address, and we deliver <strong>freshly prepared meals daily</strong> in hygienic steel tiffins everyday.
+        Kayal Meal Box offers authentic Kerala home-style meals through weekly and monthly subscription plans in Hyderabad. Simply choose your preferred plan (Weekly or Monthly), select Lunch, Dinner, or Full Meal Plan, complete your booking, and enjoy freshly prepared meals with free home delivery within 3 km or visit us for our dine-in facility.
+      </>
+    )
+  },
+  {
+    question: "Where do you currently provide meal delivery in Hyderabad?",
+    answer: (
+      <>
+        We currently provide home delivery across Nallagandla, Gopanpalle, and nearby residential and office areas in Hyderabad. Free delivery is available within a 3 km radius of our restaurant.
       </>
     )
   },
@@ -25,8 +31,7 @@ const faqList: FAQItem[] = [
     question: "Can I try Kayal Meal Box before committing to a long-term plan?",
     answer: (
       <>
-        Yes! We offer a <strong>2-day trial plan for ₹349</strong> and one-week trial plans 
-        so you can experience the home-style taste and service quality before subscribing to our monthly plans.
+        Yes! We offer a one-week trial plan so you can experience the quality, taste, and convenience of our Kerala home-style meals before subscribing to a monthly plan.
       </>
     )
   },
@@ -34,17 +39,23 @@ const faqList: FAQItem[] = [
     question: "Can I pause or resume my subscription anytime?",
     answer: (
       <>
-        Absolutely. If you are travelling or want to skip meals, you can <strong>pause your subscription</strong> by 
-        contacting us on WhatsApp. Your remaining days will be carried forward.
+        Absolutely. Our plans offer flexible validity. The 30-day monthly plan can be used within 45 days, and the 7-day weekly plan within 10 days, giving you the flexibility to skip meals whenever required. For assistance, simply contact us on WhatsApp.
       </>
     )
   },
   {
-    question: "Can I change my delivery address after subscribing?",
+    question: "What are your delivery and dine-in timings?",
     answer: (
       <>
-        Yes, you can change your delivery address by notifying us. You can even set 
-        <strong>multiple delivery addresses</strong> — for example, office for weekday lunch and home for dinner/weekends.
+        We serve Lunch from 12:00 PM to 3:00 PM, Tea & Snacks from 4:30 PM to 6:30 PM, and Dinner from 7:00 PM to 9:00 PM. Both home delivery and dine-in are available during these timings.
+      </>
+    )
+  },
+  {
+    question: "Do you charge any delivery or parcel fee?",
+    answer: (
+      <>
+        Home delivery is free within 3 km. A small parcel charge applies for takeaway and home delivery. There are no additional charges for dine-in.
       </>
     )
   },
@@ -52,73 +63,7 @@ const faqList: FAQItem[] = [
     question: "What type of cuisine does Kayal Meal Box offer?",
     answer: (
       <>
-        We specialize in authentic, <strong>home-style South Indian and Kerala cuisine</strong>. 
-        Our menu features traditional items like Veg Meals, Puttu + Kadala Curry, Appam/Parotta with curry, 
-        Tea + Pazhampori, and our Saturday special Biriyani.
-      </>
-    )
-  },
-  {
-    question: "How do you ensure hygiene, food safety, and tiffin cleanliness?",
-    answer: (
-      <>
-        We maintain strict hygiene protocols in our kitchen. All meals are <strong>cooked fresh daily</strong> with 
-        premium ingredients, and we deliver them in reusable, <strong>professionally sanitized steel tiffins</strong>, 
-        completely avoiding plastic.
-      </>
-    )
-  },
-  {
-    question: "Where do you currently provide tiffin service in Hyderabad?",
-    answer: (
-      <>
-        We deliver across <strong>Nallagandla, Gopanpalle, and surrounding nearby residential and office areas</strong> in Hyderabad.
-      </>
-    )
-  },
-  {
-    question: "Can I subscribe for only lunch or only dinner?",
-    answer: (
-      <>
-        Yes, we have flexible plans including <strong>Lunch Only, Dinner Only, Lunch + Dinner</strong>, and 
-        the <strong>Full Meal Plan</strong> (Lunch + Tea Snacks + Dinner) to match your schedule.
-      </>
-    )
-  },
-  {
-    question: "What are your delivery timings?",
-    answer: (
-      <>
-        <strong>Lunch</strong> is delivered between 12:00 PM – 3:00 PM, 
-        <strong>Tea Snacks</strong> from 4:30 PM – 6:30 PM, and 
-        <strong>Dinner</strong> from 7:00 PM – 9:30 PM.
-      </>
-    )
-  },
-  {
-    question: "Do you charge any delivery fee or tiffin deposit?",
-    answer: (
-      <>
-        Doorstep delivery is <strong>completely free</strong>. We do not charge a delivery fee, 
-        but we expect the steel tiffin from the previous delivery to be returned when the next meal is delivered.
-      </>
-    )
-  },
-  {
-    question: "How do I return the tiffin after finishing my meal?",
-    answer: (
-      <>
-        Simply wash the steel tiffin lightly and <strong>hand it back to our delivery partner</strong> during your next meal delivery. 
-        It is a simple swap system!
-      </>
-    )
-  },
-  {
-    question: "What does \"multiple delivery addresses\" mean?",
-    answer: (
-      <>
-        It means you can have your lunch delivered to your workspace/office and your dinner or weekend meals 
-        delivered to your residential address, keeping your meal plan aligned with your routine.
+        Kayal Meal Box serves authentic Kerala home-style cuisine with a variety of freshly prepared meals, including Veg Meals, Non Veg Meals, Puttu, Appam, Parotta with Veg and Non Veg curries, Tea & Snacks, and our Saturday Special Biriyani. We also offer both dine-in and home delivery options.
       </>
     )
   }
@@ -148,7 +93,7 @@ export function FAQ() {
           onClick={() => setOpenQuestion(isOpen ? null : item.question)}
           aria-expanded={isOpen}
         >
-          <span className="font-extrabold text-[#0B0C10] text-sm md:text-[15px] leading-snug">
+          <span className="font-extrabold text-[#0B0C10] text-base md:text-[18px] leading-snug">
             {item.question}
           </span>
           <span className="text-gray-500 flex-shrink-0 transition-transform duration-200">
@@ -173,7 +118,7 @@ export function FAQ() {
               transition={{ duration: 0.2, ease: "easeInOut" }}
               className="overflow-hidden"
             >
-              <div className="px-4 pb-4 md:px-5 md:pb-5 pt-1 text-xs md:text-sm text-[#0B0C10]/85 font-medium leading-relaxed">
+              <div className="px-4 pb-4 md:px-5 md:pb-5 pt-1 text-[14px] text-[#0B0C10]/85 font-medium leading-[1.6]">
                 {item.answer}
               </div>
             </motion.div>
@@ -184,11 +129,11 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 md:py-24 bg-white font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-20 md:py-[100px] lg:py-[120px] bg-white font-sans">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
         
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-[40px] font-black text-[#0B0C10] tracking-tight">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-black text-[#0B0C10] tracking-tight leading-[1.2]">
             Frequently Asked Questions
           </h2>
         </div>
@@ -208,14 +153,14 @@ export function FAQ() {
 
         {/* Bottom CTA Block */}
         <div className="text-center mt-16 space-y-4">
-          <h3 className="text-lg md:text-xl font-extrabold text-[#0B0C10]">
+          <h3 className="text-2xl md:text-[28px] lg:text-[32px] leading-[1.3] font-extrabold text-[#0B0C10]">
             Still have a Question?
           </h3>
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3.5 bg-[#0B0C10] hover:bg-black text-white font-extrabold text-sm rounded-full transition-all shadow-md active:scale-95 text-center"
+            className="inline-flex items-center justify-center px-8 h-12 bg-[#0B0C10] hover:bg-black text-white font-extrabold text-base rounded-[12px] transition-all shadow-md active:scale-95 text-center"
           >
             Contact Us Now
           </a>

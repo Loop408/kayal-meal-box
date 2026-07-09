@@ -30,11 +30,11 @@ export function SectionHeading({
         </p>
       )}
       {!eyebrow && id && <span id={id} className="sr-only" />}
-      <h2 className="text-3xl font-bold leading-tight text-text md:text-4xl lg:text-[2.75rem]">
+      <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold text-[#0B0C10] tracking-tight leading-[1.2]">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-text-muted md:text-lg">
+        <p className="mt-4 text-base md:text-[18px] text-text-muted leading-[1.6]">
           {subtitle}
         </p>
       )}

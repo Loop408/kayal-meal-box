@@ -29,7 +29,8 @@ const plans = [
       '3 meals daily (Lunch, Tea Snacks & Dinner)',
       'Traditional South Indian & Kerala taste',
       'Pause or resume subscription anytime',
-      'Free doorstep delivery',
+      'Free Home Delivery within 3 km',
+      'Comfortable Dine-In Facility Available',
     ]
   },
   {
@@ -43,7 +44,8 @@ const plans = [
       '2 meals daily (Lunch & Dinner)',
       'Perfect for busy professionals',
       'Pause or resume subscription anytime',
-      'Free doorstep delivery',
+      'Free Home Delivery within 3 km',
+      'Comfortable Dine-In Facility Available',
     ]
   },
   {
@@ -57,7 +59,8 @@ const plans = [
       '1 meal daily (Lunch only)',
       'Delivered fresh at mid-day',
       'Pause or resume subscription anytime',
-      'Free doorstep delivery',
+      'Free Home Delivery within 3 km',
+      'Comfortable Dine-In Facility Available',
     ]
   },
   {
@@ -71,7 +74,8 @@ const plans = [
       '1 meal daily (Dinner only)',
       'Delivered fresh in the evening',
       'Pause or resume subscription anytime',
-      'Free doorstep delivery',
+      'Free Home Delivery within 3 km',
+      'Comfortable Dine-In Facility Available',
     ]
   }
 ];
@@ -80,15 +84,15 @@ export function Pricing() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedPlan, setSelectedPlan] = React.useState("");
   return (
-    <section id="pricing" className="py-16 md:py-24 bg-[#FFFBF0] font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-20 md:py-[100px] lg:py-[120px] bg-[#FFFBF0] font-sans">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
         
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0B0C10] mb-4">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold text-[#0B0C10] tracking-tight leading-[1.2] mb-4">
             Our Subscription Plans
           </h2>
-          <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-[18px] text-text-muted max-w-3xl mx-auto leading-[1.6]">
             Choose a monthly subscription plan (30 Days) that fits your routine. Try our one-week trial plans to taste before you commit.
           </p>
         </div>
@@ -97,11 +101,11 @@ export function Pricing() {
         
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1440px] mx-auto items-stretch">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-3xl border-2 overflow-hidden flex flex-col justify-between shadow-md transition-transform hover:scale-[1.01] ${
+              className={`bg-white rounded-[20px] border-2 overflow-hidden flex flex-col justify-between shadow-md transition-transform hover:scale-[1.01] ${
                 plan.popular ? 'border-[#FFC503]' : 'border-[#0B0C10]/10'
               }`}
             >
@@ -118,7 +122,7 @@ export function Pricing() {
                 </div>
                 
                 <div className="p-6 text-center">
-                  <h3 className="text-lg font-extrabold text-[#0B0C10] mb-4 uppercase tracking-tight min-h-[56px] flex items-center justify-center">
+                  <h3 className="text-[20px] font-extrabold text-[#0B0C10] mb-4 uppercase tracking-tight min-h-[56px] flex items-center justify-center">
                     {plan.name}
                   </h3>
                   
@@ -157,7 +161,7 @@ export function Pricing() {
                     setSelectedPlan(plan.name);
                     setIsModalOpen(true);
                   }}
-                  className="block w-full py-2 px-4 sm:py-3 sm:px-6 bg-[#0B0C10] hover:bg-black text-white text-sm font-bold rounded-full text-center transition-all shadow-sm active:scale-[0.98] cursor-pointer"
+                  className="w-full h-12 flex items-center justify-center bg-[#0B0C10] hover:bg-black text-white text-base font-bold rounded-[12px] transition-all shadow-sm active:scale-[0.98] cursor-pointer"
                 >
                   Subscribe Now
                 </button>

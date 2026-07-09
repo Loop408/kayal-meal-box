@@ -52,8 +52,8 @@ export default function PrivacyPolicy() {
         <h2 className="text-xl font-bold text-[#2F6B45]">Contact</h2>
         <p>If you have any privacy related concerns, contact:</p>
         <p>
-          <a href="mailto:info@evermeals.in" className="text-[#2F6B45] hover:underline font-semibold">
-            info@evermeals.in
+          <a href="mailto:kayalkeralarestaurant@gmail.com" className="text-[#2F6B45] hover:underline font-semibold">
+            kayalkeralarestaurant@gmail.com
           </a>
         </p>
       </section>

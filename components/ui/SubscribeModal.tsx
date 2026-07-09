@@ -15,7 +15,7 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
     email: "",
     phone: "",
     plan: "",
-    mealPreference: "veg" as "veg" | "non-veg",
+    mealPreference: "non-veg" as "veg" | "non-veg",
     startDate: "",
     address: "",
   });
@@ -235,18 +235,7 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
                 <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-2">
                   Dietary Preference
                 </label>
-                <div className="grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => handlePreferenceChange("veg")}
-                    className={`py-3 px-4 rounded-xl border-2 flex items-center justify-center gap-2 font-bold text-sm transition-all ${
-                      formData.mealPreference === "veg"
-                        ? "border-[#FFC503] bg-[#FFF9E6] text-[#0B0C10]"
-                        : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50"
-                    }`}
-                  >
-                    <span>🌱</span> Veg Only
-                  </button>
+                <div className="grid grid-cols-1 gap-3">
                   <button
                     type="button"
                     onClick={() => handlePreferenceChange("non-veg")}

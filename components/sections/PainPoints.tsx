@@ -13,7 +13,7 @@ const SpeechBubble = ({ text, className, tailCorner }: { text: React.ReactNode, 
     'tl': 'rounded-[2rem] rounded-tl-[0.25rem]',
   };
   return (
-    <div className={`relative bg-white border-[2.5px] border-text px-6 py-4 font-bold text-[15px] md:text-[15px] leading-snug text-center max-w-[220px] shadow-[4px_4px_0px_0px_rgba(45,45,45,1)] z-20 ${corners[tailCorner]} ${className}`}>
+    <div className={`relative bg-white border-[2.5px] border-text px-6 py-4 font-bold text-[14px] leading-snug text-center max-w-[220px] shadow-[4px_4px_0px_0px_rgba(45,45,45,1)] z-20 ${corners[tailCorner]} ${className}`}>
       {text}
     </div>
   )
@@ -21,11 +21,11 @@ const SpeechBubble = ({ text, className, tailCorner }: { text: React.ReactNode, 
 
 export function PainPoints() {
   return (
-    <section className="pt-6 pb-16 md:pt-10 md:pb-24 bg-[#FFFDF8] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section className="pt-12 pb-20 md:pt-[60px] md:pb-[100px] lg:pb-[120px] bg-[#FFFDF8] overflow-hidden">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-[32px] md:text-5xl font-extrabold text-text tracking-tight leading-tight">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold text-text tracking-tight leading-[1.2]">
             Do these food problems<br className="hidden md:block" /> sound familiar?
           </h2>
         </div>
@@ -98,11 +98,11 @@ export function PainPoints() {
         {/* Description & Buttons */}
         <div className="max-w-4xl mx-auto text-center">
           <AnimateIn delay={0.5}>
-            <p className="text-[15px] md:text-[17px] text-text-muted mb-6 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base md:text-[18px] text-text-muted mb-6 leading-[1.6] max-w-3xl mx-auto">
               Tired of unhygienic restaurant food? Is your mess serving the same boring menu every day? Daily ordering through food delivery apps feels expensive? And cooking daily is simply exhausting?
             </p>
-            <p className="text-[16px] md:text-[18px] text-text font-bold mb-10 leading-relaxed max-w-3xl mx-auto">
-              <span className="text-primary font-extrabold">Kayal Meal Box</span> is built for busy professionals, students, and families who want reliable, affordable home-style tiffin service without the stress of daily cooking.
+            <p className="text-base md:text-[18px] text-text font-bold mb-10 leading-[1.6] max-w-3xl mx-auto">
+              <span className="text-primary font-extrabold">Kayal Meal Box</span> is built for busy professionals, students, and families who enjoy fresh, hygienic, and affordable home-style meals with the convenience of dine-in or home delivery.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
@@ -110,13 +110,13 @@ export function PainPoints() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-10 py-4 bg-primary hover:bg-primary/90 text-text font-bold rounded-full transition-colors shadow-sm text-center text-lg"
+                className="w-full sm:w-auto px-8 h-12 flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold rounded-[12px] transition-colors shadow-sm text-center text-base"
               >
                 Subscribe Now
               </a>
               <a 
                 href="#menu"
-                className="w-full sm:w-auto px-10 py-4 bg-secondary hover:bg-secondary/90 text-white font-bold rounded-full transition-colors shadow-sm text-center text-lg"
+                className="w-full sm:w-auto px-8 h-12 flex items-center justify-center bg-secondary hover:bg-secondary/90 text-white font-bold rounded-[12px] transition-colors shadow-sm text-center text-base"
               >
                 View Menu
               </a>

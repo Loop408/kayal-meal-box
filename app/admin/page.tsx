@@ -22,7 +22,12 @@ export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterPlan, setFilterPlan] = useState("all");
   const [filterPref, setFilterPref] = useState("all");
-
+  const [editingSub, setEditingSub] = useState<Subscription | null>(null);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const fetchSubscriptions = async () => {
     setLoading(true);
     try {
@@ -65,6 +70,34 @@ export default function AdminDashboard() {
       alert("Error deleting subscription. Please try again.");
     }
   };
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingSub) return;
+    setIsUpdating(true);
+    try {
+      const response = await fetch('/api/admin', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editingSub)
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setSubscriptions(prev => prev.map(sub => sub.id === editingSub.id ? editingSub : sub));
+        setEditingSub(null);
+      } else {
+        alert(data.error || "Failed to update subscription.");
+      }
+    } catch (err) {
+      console.error("Error updating subscription:", err);
+      alert("Error updating subscription. Please try again.");
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
 
   // Filter & Search Logic
   const filteredSubs = subscriptions.filter((sub) => {
@@ -115,6 +148,67 @@ export default function AdminDashboard() {
       return isoString;
     }
   };
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loginEmail === "admin@kayal.com" && loginPassword === "kayaladmin123") {
+      setIsAuthenticated(true);
+      setLoginError("");
+    } else {
+      setLoginError("Invalid email or password");
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#FFFBF0] font-sans flex items-center justify-center p-4">
+        <div className="bg-white rounded-3xl border border-[#0B0C10]/15 shadow-2xl p-8 w-full max-w-md">
+          <div className="text-center mb-8">
+            <span className="text-4xl mb-2 block">🍲</span>
+            <h1 className="text-2xl font-extrabold text-[#0B0C10]">Admin Login</h1>
+            <p className="text-sm text-gray-500 mt-2">Sign in to manage subscriptions</p>
+          </div>
+          
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div>
+              <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-2">Email Address</label>
+              <input
+                type="email"
+                required
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-2">Password</label>
+              <input
+                type="password"
+                required
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+              />
+            </div>
+            
+            {loginError && <p className="text-red-500 text-xs font-bold text-center">{loginError}</p>}
+            
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#0B0C10] hover:bg-black text-white font-extrabold rounded-full transition-all text-sm shadow-md active:scale-[0.98]"
+            >
+              Sign In
+            </button>
+            <Link
+              href="/"
+              className="block w-full py-3 bg-transparent hover:bg-gray-50 text-[#0B0C10] font-bold rounded-full transition-all text-sm text-center border border-gray-200"
+            >
+              Back to Home
+            </Link>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FFFBF0] font-sans pb-16">
@@ -336,6 +430,15 @@ export default function AdminDashboard() {
                             </svg>
                             <span>WhatsApp</span>
                           </a>
+                          <button
+                            onClick={() => setEditingSub(sub)}
+                            className="p-2 bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-600 rounded-full transition-all text-xs font-bold hover:scale-105 active:scale-95"
+                            title="Edit Record"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                          </button>
                           
                           <button
                             onClick={() => handleDelete(sub.id, sub.name)}
@@ -359,6 +462,115 @@ export default function AdminDashboard() {
         </div>
 
       </main>
+
+      {/* Edit Modal */}
+      {editingSub && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl border border-[#0B0C10]/15 shadow-2xl p-6 w-full max-w-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-extrabold text-xl text-[#0B0C10]">Edit Subscription</h3>
+              <button onClick={() => setEditingSub(null)} className="text-gray-500 hover:text-black">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <form onSubmit={handleUpdate} className="space-y-4">
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Name</label>
+                <input
+                  type="text"
+                  required
+                  value={editingSub.name}
+                  onChange={(e) => setEditingSub({ ...editingSub, name: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Phone</label>
+                <input
+                  type="text"
+                  required
+                  value={editingSub.phone}
+                  onChange={(e) => setEditingSub({ ...editingSub, phone: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={editingSub.email}
+                  onChange={(e) => setEditingSub({ ...editingSub, email: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Plan</label>
+                <select
+                  value={editingSub.plan}
+                  onChange={(e) => setEditingSub({ ...editingSub, plan: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                >
+                  <option value="Full Meal Plan">Full Meal Plan (Lunch + Tea Snacks + Dinner)</option>
+                  <option value="Lunch + Dinner Plan">Lunch + Dinner Plan</option>
+                  <option value="Lunch Only Plan">Lunch Only Plan</option>
+                  <option value="Dinner Only Plan">Dinner Only Plan</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Dietary Preference</label>
+                <select
+                  value={editingSub.mealPreference}
+                  onChange={(e) => setEditingSub({ ...editingSub, mealPreference: e.target.value as "veg" | "non-veg" })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                >
+                  <option value="veg">🌱 Veg Only</option>
+                  <option value="non-veg">🍗 Veg / Non-Veg</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Start Date</label>
+                <input
+                  type="date"
+                  required
+                  value={editingSub.startDate}
+                  onChange={(e) => setEditingSub({ ...editingSub, startDate: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Address</label>
+                <textarea
+                  required
+                  rows={2}
+                  value={editingSub.address}
+                  onChange={(e) => setEditingSub({ ...editingSub, address: e.target.value })}
+                  className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10] resize-none"
+                />
+              </div>
+              <div className="flex gap-3 justify-end pt-2">
+                <button
+                  type="button"
+                  onClick={() => setEditingSub(null)}
+                  className="px-6 py-2 bg-white hover:bg-gray-50 border border-gray-200 text-[#0B0C10] font-bold rounded-full transition-all text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isUpdating}
+                  className="px-6 py-2 bg-[#0B0C10] hover:bg-black text-white font-bold rounded-full transition-all text-sm disabled:opacity-50"
+                >
+                  {isUpdating ? "Saving..." : "Save Changes"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

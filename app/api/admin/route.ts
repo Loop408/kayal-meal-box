@@ -78,3 +78,48 @@ export async function DELETE(request: Request) {
     );
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    const updatedSub = await request.json();
+
+    if (!updatedSub || !updatedSub.id) {
+      return NextResponse.json(
+        { success: false, error: "Invalid data or missing ID" },
+        { status: 400 }
+      );
+    }
+
+    const filePath = path.join(process.cwd(), "lib", "subscriptions.json");
+    
+    if (!fs.existsSync(filePath)) {
+      return NextResponse.json(
+        { success: false, error: "No subscriptions found" },
+        { status: 404 }
+      );
+    }
+
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    let subscriptions = JSON.parse(fileContent);
+    
+    const index = subscriptions.findIndex((sub: any) => sub.id === updatedSub.id);
+
+    if (index === -1) {
+      return NextResponse.json(
+        { success: false, error: "Subscription not found" },
+        { status: 404 }
+      );
+    }
+
+    subscriptions[index] = { ...subscriptions[index], ...updatedSub };
+    fs.writeFileSync(filePath, JSON.stringify(subscriptions, null, 2), "utf8");
+
+    return NextResponse.json({ success: true, subscription: subscriptions[index] });
+  } catch (error: any) {
+    console.error("Error updating subscription:", error);
+    return NextResponse.json(
+      { success: false, error: error.message || "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}

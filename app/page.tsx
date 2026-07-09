@@ -4,6 +4,7 @@ import { PainPoints } from "@/components/sections/PainPoints";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { WeeklyMenu } from "@/components/sections/WeeklyMenu";
+import { PlanValidity } from "@/components/sections/PlanValidity";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
@@ -18,6 +19,7 @@ export default function Home() {
         <HowItWorks />
         <WhyChooseUs />
         <WeeklyMenu />
+        <PlanValidity />
         <Pricing />
         <FAQ />
       </main>

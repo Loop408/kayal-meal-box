@@ -46,6 +46,7 @@ export default function TermsAndConditions() {
           <li>Free home delivery is available within a 3 km radius of our restaurant.</li>
           <li>A small parcel charge applies for takeaway and home delivery.</li>
           <li>Delivery timings may vary due to traffic, weather, or other operational reasons.</li>
+          <li>Tea & Snacks are available for dine-in only. Home delivery is currently unavailable.</li>
         </ul>
       </section>
 

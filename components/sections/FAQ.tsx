@@ -63,7 +63,7 @@ const faqList: FAQItem[] = [
     question: "What type of cuisine does Kayal Meal Box offer?",
     answer: (
       <>
-        Kayal Meal Box serves authentic Kerala home-style cuisine with a variety of freshly prepared meals, including Veg Meals, Non Veg Meals, Puttu, Appam, Parotta with Veg and Non Veg curries, Tea & Snacks, and our Saturday Special Biriyani. We also offer both dine-in and home delivery options.
+        Kayal Meal Box serves authentic Kerala home-style cuisine with a variety of freshly prepared meals, including Veg Meals, Non Veg Meals, Puttu, Appam, Parotta with Veg and Non Veg curries, Tea & Snacks, and our Saturday Special Biriyani/Meals. We also offer both dine-in and home delivery options.
       </>
     )
   }

@@ -80,8 +80,8 @@ const menuData: Record<DayName, Meal[]> = {
   Saturday: [
     {
       label: 'LUNCH',
-      vegItem: 'Biriyani',
-      nonVegItem: 'Biriyani',
+      vegItem: 'Biriyani/Meals',
+      nonVegItem: 'Biriyani/Meals',
       vegDesc: '',
       nonVegDesc: ''
     },

@@ -18,7 +18,7 @@ const menuData: Record<DayName, Meal[]> = {
   Monday: [
     { label: 'LUNCH', vegItem: 'Veg Meals', nonVegItem: 'Veg Meals', vegDesc: VEG_MEALS_DESC, nonVegDesc: '' },
     { label: 'TEA SNACKS', vegItem: 'Tea + Pazhampori', nonVegItem: 'Tea + Pazhampori', vegDesc: '', nonVegDesc: '' },
-    { label: 'DINNER', vegItem: 'Chapati with Veg / Non Veg Curry', nonVegItem: 'Chapati with Veg / Non Veg Curry', vegDesc: '', nonVegDesc: '' }
+    { label: 'DINNER', vegItem: 'Chapati / Parotta with Veg / Non Veg Curry', nonVegItem: 'Chapati / Parotta with Veg / Non Veg Curry', vegDesc: '', nonVegDesc: '' }
   ],
   Tuesday: [
     { label: 'LUNCH', vegItem: 'Veg Meals / Non Veg Meals', nonVegItem: 'Veg Meals / Non Veg Meals', vegDesc: VEG_MEALS_DESC, nonVegDesc: '' },
@@ -48,8 +48,8 @@ const menuData: Record<DayName, Meal[]> = {
     },
     {
       label: 'DINNER',
-      vegItem: 'Chapati with Veg / Non Veg Curry',
-      nonVegItem: 'Chapati with Veg / Non Veg Curry',
+      vegItem: 'Chapati / Parotta with Veg / Non Veg Curry',
+      nonVegItem: 'Chapati / Parotta with Veg / Non Veg Curry',
       vegDesc: '',
       nonVegDesc: ''
     }

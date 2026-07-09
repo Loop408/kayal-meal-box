@@ -129,7 +129,7 @@ export const weeklyMenu: MenuDay[] = [
       {
         time: "7:00 PM – 9:30 PM",
         label: "Dinner",
-        items: "Chapati + Veg / Non Veg Curry",
+        items: "Chapati / Parotta + Veg / Non Veg Curry",
         type: "veg",
       },
     ],
@@ -164,7 +164,7 @@ export const weeklyMenu: MenuDay[] = [
       {
         time: "7:00 PM – 9:30 PM",
         label: "Dinner",
-        items: "Chapati + Veg / Non Veg Curry",
+        items: "Chapati / Parotta + Veg / Non Veg Curry",
         type: "veg",
       },
     ],
@@ -198,7 +198,7 @@ export const weeklyMenu: MenuDay[] = [
       {
         time: "7:00 PM – 9:30 PM",
         label: "Dinner",
-        items: "Chapati + Veg / Non Veg Curry",
+        items: "Chapati / Parotta + Veg / Non Veg Curry",
         type: "veg",
       },
     ],
@@ -233,7 +233,7 @@ export const weeklyMenu: MenuDay[] = [
       {
         time: "7:00 PM – 9:30 PM",
         label: "Dinner",
-        items: "Chapati + Veg / Non Veg Curry",
+        items: "Chapati / Parotta + Veg / Non Veg Curry",
         type: "veg",
       },
     ],

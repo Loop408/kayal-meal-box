@@ -146,20 +146,24 @@ export function WeeklyMenu() {
     <section id="menu" className="py-20 md:py-[100px] lg:py-[120px] bg-[#FFFBF0] font-sans">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-16">
           <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-extrabold text-[#0B0C10] tracking-tight leading-[1.2]">
-            Our Menu
+            Our <span className="text-[#FFC503]">Weekly Menu</span>
           </h2>
+          <p className="text-text-muted mt-4 text-lg max-w-2xl mx-auto">
+            Discover our carefully curated home-style meals for every day of the week. Prepared fresh, delivered hot.
+          </p>
         </div>
+
         {/* Days Tab Bar */}
-        <div className="flex flex-wrap gap-2.5 mb-10 pb-2 overflow-x-auto">
+        <div className="flex flex-wrap gap-2.5 mb-12 pb-2 overflow-x-auto justify-center">
           {Object.keys(dayShortNames).map((day) => (
             <button
               key={day}
               onClick={() => setSelectedDayShort(day)}
-              className={`px-6 py-3 rounded-full font-extrabold text-[14px] md:text-base transition-all active:scale-95 ${
+              className={`px-8 py-3 rounded-full font-extrabold text-[14px] md:text-base transition-all active:scale-95 ${
                 selectedDayShort === day
-                  ? 'bg-[#FFC503] text-[#0B0C10] shadow-sm'
+                  ? 'bg-[#FFC503] text-[#0B0C10] shadow-md scale-105'
                   : 'bg-white hover:bg-[#0B0C10]/5 border border-[#0B0C10]/5 text-[#0B0C10]'
               }`}
             >
@@ -167,29 +171,58 @@ export function WeeklyMenu() {
             </button>
           ))}
         </div>
-        {/* Meals Cards Display */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        {/* Active Day Meals */}
+        <div className="flex flex-col gap-5 md:grid md:grid-cols-3 md:gap-8">
           {activeMeals.map((meal, index) => {
             const title = isNonVeg ? meal.nonVegItem : meal.vegItem;
             const description = isNonVeg ? meal.nonVegDesc : meal.vegDesc;
+            
+            // Assign images and colors based on label
+            let imageSrc = "/illustrations/menu_lunch.png";
+            let imageAlt = "Lunch";
+            let badgeBg = "bg-[#FFF4E5]";
+            let badgeText = "text-[#E65100]";
+            let accentBorder = "border-t-[#FFC503]";
+
+            if (meal.label === 'TEA SNACKS') {
+              imageSrc = "/icons/dine_in.png";
+              imageAlt = "Tea Snacks";
+              badgeBg = "bg-[#E8F5E9]";
+              badgeText = "text-[#2E7D32]";
+              accentBorder = "border-t-[#4CAF50]";
+            } else if (meal.label === 'DINNER') {
+              imageSrc = "/icons/home_meal.png";
+              imageAlt = "Dinner";
+              badgeBg = "bg-[#E3F2FD]";
+              badgeText = "text-[#1565C0]";
+              accentBorder = "border-t-[#1565C0]";
+            }
+
             return (
               <div 
                 key={index} 
-                className="bg-white border border-[#FFC503]/40 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
+                className={`bg-white border border-[#0B0C10]/5 border-t-4 ${accentBorder} rounded-[16px] md:rounded-[20px] overflow-hidden flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group`}
               >
-                <div>
-                  {/* Badge */}
-                  <span className="inline-block px-3 py-1 bg-[#E5F9EB] text-[#2F6B45] font-extrabold rounded-full text-xs tracking-wider mb-4">
+                {/* Image */}
+                <div className="w-full h-[160px] md:h-[180px] shrink-0 bg-gradient-to-br from-[#FFFBF0] to-white flex items-center justify-center p-4 md:p-6 relative overflow-hidden">
+                   <div className="absolute inset-0 bg-[#FFC503]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   <img src={imageSrc} alt={imageAlt} className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm group-hover:scale-110 transition-transform duration-500" />
+                </div>
+
+                {/* Content */}
+                <div className="p-4 md:p-6 flex flex-col flex-grow min-w-0">
+                  <span className={`inline-block w-max px-3 py-1 ${badgeBg} ${badgeText} font-extrabold rounded-full text-[10px] md:text-[11px] uppercase tracking-widest mb-2 md:mb-3`}>
                     {meal.label}
                   </span>
-                  {/* Title */}
-                  <h3 className="text-xl md:text-[24px] font-bold text-[#0B0C10] mb-3 leading-[1.3]">
+                  <h4 className="text-[15px] md:text-xl font-bold text-[#0B0C10] leading-[1.4] mb-1">
                     {title}
-                  </h3>
-                  {/* Description */}
-                  <p className="text-[14px] text-text-muted leading-[1.6]">
-                    {description}
-                  </p>
+                  </h4>
+                  {description && (
+                    <p className="text-[12px] md:text-[14px] text-text-muted leading-[1.5]">
+                      {description}
+                    </p>
+                  )}
                 </div>
               </div>
             );

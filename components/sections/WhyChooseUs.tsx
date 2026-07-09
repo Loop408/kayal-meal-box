@@ -18,10 +18,7 @@ const cardItems: CardItem[] = [
     description: "Freshly cooked home-style meals with quality ingredients for daily nutrition.",
     rotation: "-rotate-[1.5deg] hover:rotate-0",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 14.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5z" />
-      </svg>
+      <img src="/icons/home_meal.png" alt="Home meal" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -29,9 +26,7 @@ const cardItems: CardItem[] = [
     description: "Affordable meal plans with good portions for students and professionals.",
     rotation: "rotate-[1.5deg] hover:rotate-0",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-      </svg>
+      <img src="/icons/affordable.png" alt="Affordable" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -39,10 +34,7 @@ const cardItems: CardItem[] = [
     description: "For example - office for weekday lunch, home for dinner, and home for weekends",
     rotation: "-rotate-[2deg] hover:rotate-0",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
+      <img src="/icons/addresses.png" alt="Map pin" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -50,9 +42,7 @@ const cardItems: CardItem[] = [
     description: "Pause or resume your meal subscription anytime without hassle.",
     rotation: "rotate-[2deg] hover:rotate-0",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
+      <img src="/icons/pause.png" alt="Pause" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -60,10 +50,7 @@ const cardItems: CardItem[] = [
     description: "Enjoy authentic Kerala food in a hygienic setting.",
     rotation: "-rotate-[1deg] hover:rotate-0",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v4M6 6h12M6 6v14a2 2 0 002 2h8a2 2 0 002-2V6" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 11h12M6 16h12" />
-      </svg>
+      <img src="/icons/dine_in.png" alt="Dine in" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
 ];

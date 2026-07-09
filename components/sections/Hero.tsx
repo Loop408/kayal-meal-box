@@ -215,54 +215,52 @@ export function Hero() {
 
         </div>
 
-        {/* Bottom Trust Bar */}
-        <div className="mt-12 md:mt-20 bg-[#FDFBF7] border border-primary/10 rounded-[1.5rem] p-6 lg:p-8 shadow-xs">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-4 items-center">
-            {/* Feature 1 */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17 8C8 14 4 19 3 21C5 20 10 16 16 7C14 7 12 8 10 9C12 7 15 5 18 3C18 5 18 7 17 8Z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs font-black tracking-wider text-primary uppercase">Homely Taste</h4>
-                <p className="text-xs text-text-muted mt-0.5 font-bold">Like home food</p>
-              </div>
+        {/* Bottom Trust Indicators - Floating Cards */}
+        <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
+          {/* Feature 1 */}
+          <div className="bg-white/80 backdrop-blur-sm border border-primary/10 rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-center gap-4 hover:-translate-y-1 group">
+            <div className="w-12 h-12 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17 8C8 14 4 19 3 21C5 20 10 16 16 7C14 7 12 8 10 9C12 7 15 5 18 3C18 5 18 7 17 8Z" />
+              </svg>
             </div>
-            {/* Feature 2 */}
-            <div className="flex items-center gap-4 sm:border-l sm:border-primary/10 sm:pl-6 lg:pl-4">
-              <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs font-black tracking-wider text-primary uppercase">Hygienic Food</h4>
-                <p className="text-xs text-text-muted mt-0.5 font-bold">Prepared with care</p>
-              </div>
+            <div>
+              <h4 className="text-sm font-extrabold tracking-wide text-primary">Authentic Taste</h4>
+              <p className="text-xs text-[#1D231E]/70 mt-0.5 font-medium leading-tight">Just like mom's cooking</p>
             </div>
-            {/* Feature 3 */}
-            <div className="flex items-center gap-4 lg:border-l lg:border-primary/10 lg:pl-6">
-              <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary">
-                <span className="text-lg font-black leading-none">₹</span>
-              </div>
-              <div>
-                <h4 className="text-xs font-black tracking-wider text-primary uppercase">Affordable Plans</h4>
-                <p className="text-xs text-text-muted mt-0.5 font-bold">Quality at best prices</p>
-              </div>
+          </div>
+          {/* Feature 2 */}
+          <div className="bg-white/80 backdrop-blur-sm border border-primary/10 rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-center gap-4 hover:-translate-y-1 group">
+            <div className="w-12 h-12 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </div>
-            {/* Feature 4 */}
-            <div className="flex items-center gap-4 sm:border-l sm:border-primary/10 sm:pl-6 lg:pl-6">
-              <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="text-xs font-black tracking-wider text-primary uppercase">On Time Delivery</h4>
-                <p className="text-xs text-text-muted mt-0.5 font-bold">Always on time</p>
-              </div>
+            <div>
+              <h4 className="text-sm font-extrabold tracking-wide text-primary">100% Hygienic</h4>
+              <p className="text-xs text-[#1D231E]/70 mt-0.5 font-medium leading-tight">Clean & fresh ingredients</p>
+            </div>
+          </div>
+          {/* Feature 3 */}
+          <div className="bg-white/80 backdrop-blur-sm border border-primary/10 rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-center gap-4 hover:-translate-y-1 group">
+            <div className="w-12 h-12 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <span className="text-lg font-black leading-none">₹</span>
+            </div>
+            <div>
+              <h4 className="text-sm font-extrabold tracking-wide text-primary">Pocket Friendly</h4>
+              <p className="text-xs text-[#1D231E]/70 mt-0.5 font-medium leading-tight">Meals that fit your budget</p>
+            </div>
+          </div>
+          {/* Feature 4 */}
+          <div className="bg-white/80 backdrop-blur-sm border border-primary/10 rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 flex items-center gap-4 hover:-translate-y-1 group">
+            <div className="w-12 h-12 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h4 className="text-sm font-extrabold tracking-wide text-primary">Punctual Delivery</h4>
+              <p className="text-xs text-[#1D231E]/70 mt-0.5 font-medium leading-tight">Hot & ready on schedule</p>
             </div>
           </div>
         </div>

@@ -56,8 +56,8 @@ const cardItems: CardItem[] = [
     ),
   },
   {
-    title: "Hygienic Steel Tiffin (No Plastic)",
-    description: "Eco-friendly, hygienic steel tiffins for safe meal delivery.",
+    title: "Comfortable Dine-In",
+    description: "Enjoy authentic Kerala food in a hygienic setting.",
     rotation: "-rotate-[1deg] hover:rotate-0",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -100,9 +100,7 @@ export function WhyChooseUs() {
           <div className="flex flex-row sm:flex-col lg:flex-row gap-4 justify-start lg:justify-end items-center w-full">
             <AnimateIn className="w-full sm:w-auto">
               <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#pricing"
                 className="inline-flex items-center justify-center w-full sm:w-auto px-8 h-12 rounded-[12px] bg-[#FFC503] text-[#0B0C10] font-extrabold text-base tracking-wide shadow-md hover:shadow-lg active:scale-95 transition-all text-center"
               >
                 Subscribe Now

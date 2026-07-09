@@ -107,9 +107,7 @@ export function PainPoints() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <a 
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#pricing"
                 className="w-full sm:w-auto px-8 h-12 flex items-center justify-center bg-primary hover:bg-primary/90 text-white font-bold rounded-[12px] transition-colors shadow-sm text-center text-base"
               >
                 Subscribe Now

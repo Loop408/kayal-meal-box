@@ -1,30 +1,33 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
 // Set route to force dynamic so it isn't statically cached
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "lib", "subscriptions.json");
-    
-    let subscriptions = [];
-    if (fs.existsSync(filePath)) {
-      try {
-        const fileContent = fs.readFileSync(filePath, "utf8");
-        subscriptions = JSON.parse(fileContent);
-      } catch (err) {
-        console.error("Error parsing subscriptions:", err);
-      }
-    }
+    const { data: subscriptions, error } = await supabase
+      .from('subscriptions')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-    // Sort by newest first
-    subscriptions.sort((a: any, b: any) => {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    });
+    if (error) throw error;
 
-    return NextResponse.json({ success: true, subscriptions });
+    // Map supabase columns back to frontend expected camelCase if needed,
+    // but we can just map it here to ensure compatibility with existing frontend
+    const mappedSubs = subscriptions?.map(sub => ({
+      id: sub.id,
+      name: sub.name,
+      email: sub.email,
+      phone: sub.phone,
+      plan: sub.plan,
+      mealPreference: sub.meal_preference,
+      startDate: sub.start_date,
+      address: sub.address,
+      createdAt: sub.created_at
+    })) || [];
+
+    return NextResponse.json({ success: true, subscriptions: mappedSubs });
   } catch (error: any) {
     console.error("Error in admin API:", error);
     return NextResponse.json(
@@ -46,28 +49,12 @@ export async function DELETE(request: Request) {
       );
     }
 
-    const filePath = path.join(process.cwd(), "lib", "subscriptions.json");
-    
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { success: false, error: "No subscriptions found" },
-        { status: 404 }
-      );
-    }
+    const { error } = await supabase
+      .from('subscriptions')
+      .delete()
+      .eq('id', id);
 
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    let subscriptions = JSON.parse(fileContent);
-    
-    const filteredSubscriptions = subscriptions.filter((sub: any) => sub.id !== id);
-
-    if (subscriptions.length === filteredSubscriptions.length) {
-      return NextResponse.json(
-        { success: false, error: "Subscription not found" },
-        { status: 404 }
-      );
-    }
-
-    fs.writeFileSync(filePath, JSON.stringify(filteredSubscriptions, null, 2), "utf8");
+    if (error) throw error;
 
     return NextResponse.json({ success: true, message: "Subscription deleted successfully" });
   } catch (error: any) {
@@ -90,31 +77,38 @@ export async function PUT(request: Request) {
       );
     }
 
-    const filePath = path.join(process.cwd(), "lib", "subscriptions.json");
-    
-    if (!fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { success: false, error: "No subscriptions found" },
-        { status: 404 }
-      );
-    }
+    const { id, name, email, phone, plan, mealPreference, startDate, address } = updatedSub;
 
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    let subscriptions = JSON.parse(fileContent);
-    
-    const index = subscriptions.findIndex((sub: any) => sub.id === updatedSub.id);
+    const { data, error } = await supabase
+      .from('subscriptions')
+      .update({
+        name,
+        email,
+        phone,
+        plan,
+        meal_preference: mealPreference,
+        start_date: startDate,
+        address
+      })
+      .eq('id', id)
+      .select()
+      .single();
 
-    if (index === -1) {
-      return NextResponse.json(
-        { success: false, error: "Subscription not found" },
-        { status: 404 }
-      );
-    }
+    if (error) throw error;
 
-    subscriptions[index] = { ...subscriptions[index], ...updatedSub };
-    fs.writeFileSync(filePath, JSON.stringify(subscriptions, null, 2), "utf8");
+    const mappedSub = {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      plan: data.plan,
+      mealPreference: data.meal_preference,
+      startDate: data.start_date,
+      address: data.address,
+      createdAt: data.created_at
+    };
 
-    return NextResponse.json({ success: true, subscription: subscriptions[index] });
+    return NextResponse.json({ success: true, subscription: mappedSub });
   } catch (error: any) {
     console.error("Error updating subscription:", error);
     return NextResponse.json(

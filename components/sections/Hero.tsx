@@ -140,9 +140,7 @@ export function Hero() {
             {/* Action Buttons */}
             <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-3 pt-2">
               <a 
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#pricing"
                 className="px-8 h-12 bg-accent hover:bg-accent/95 text-black font-bold rounded-[12px] text-center transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 text-base flex items-center justify-center border border-accent/10"
               >
                 {/* Calendar Icon */}

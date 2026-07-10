@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://kayalkerala.in
+
+# Sitemaps
+Sitemap: https://kayalkerala.in/sitemap.xml

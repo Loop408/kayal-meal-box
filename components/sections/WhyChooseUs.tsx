@@ -4,6 +4,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { WHATSAPP_URL } from "@/lib/data";
 import { motion } from "framer-motion";
 import React from "react";
+import Image from "next/image";
 
 interface CardItem {
   title: string;
@@ -18,7 +19,7 @@ const cardItems: CardItem[] = [
     description: "Freshly cooked home-style meals with quality ingredients for daily nutrition.",
     rotation: "-rotate-[1.5deg] hover:rotate-0",
     icon: (
-      <img src="/icons/home_meal.png" alt="Home meal" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
+      <Image src="/icons/home_meal.png" alt="Home meal" width={36} height={36} className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -26,7 +27,7 @@ const cardItems: CardItem[] = [
     description: "Affordable meal plans with good portions for students and professionals.",
     rotation: "rotate-[1.5deg] hover:rotate-0",
     icon: (
-      <img src="/icons/affordable.png" alt="Affordable" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
+      <Image src="/icons/affordable.png" alt="Affordable" width={36} height={36} className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -34,7 +35,7 @@ const cardItems: CardItem[] = [
     description: "For example - office for weekday lunch, home for dinner, and home for weekends",
     rotation: "-rotate-[2deg] hover:rotate-0",
     icon: (
-      <img src="/icons/addresses.png" alt="Map pin" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
+      <Image src="/icons/addresses.png" alt="Map pin" width={36} height={36} className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -42,7 +43,7 @@ const cardItems: CardItem[] = [
     description: "Pause or resume your meal subscription anytime without hassle.",
     rotation: "rotate-[2deg] hover:rotate-0",
     icon: (
-      <img src="/icons/pause.png" alt="Pause" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
+      <Image src="/icons/pause.png" alt="Pause" width={36} height={36} className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
   {
@@ -50,7 +51,7 @@ const cardItems: CardItem[] = [
     description: "Enjoy authentic Kerala food in a hygienic setting.",
     rotation: "-rotate-[1deg] hover:rotate-0",
     icon: (
-      <img src="/icons/dine_in.png" alt="Dine in" className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
+      <Image src="/icons/dine_in.png" alt="Dine in" width={36} height={36} className="w-9 h-9 object-contain mix-blend-multiply drop-shadow-sm" />
     ),
   },
 ];

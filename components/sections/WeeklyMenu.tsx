@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 type DayName = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
@@ -207,7 +208,7 @@ export function WeeklyMenu() {
                 {/* Image */}
                 <div className="w-full h-[160px] md:h-[180px] shrink-0 bg-gradient-to-br from-[#FFFBF0] to-white flex items-center justify-center p-4 md:p-6 relative overflow-hidden">
                    <div className="absolute inset-0 bg-[#FFC503]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                   <img src={imageSrc} alt={imageAlt} className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm group-hover:scale-110 transition-transform duration-500" />
+                   <Image src={imageSrc} alt={imageAlt} width={200} height={200} className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm group-hover:scale-110 transition-transform duration-500" />
                 </div>
 
                 {/* Content */}

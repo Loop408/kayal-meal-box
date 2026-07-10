@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,7 @@ export default function NavBar() {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           {/* Placeholder logo – replace with uploaded logo */}
-          <img src="/illustrations/logo.svg" alt="Kayal Meal Box" className="h-10 w-10" />
+          <Image src="/illustrations/logo.svg" alt="Kayal Meal Box" width={40} height={40} className="h-10 w-10" />
           <span className="text-xl font-semibold text-primary">Kayal Meal Box</span>
         </div>
         {/* Desktop menu */}

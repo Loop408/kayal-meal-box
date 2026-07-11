@@ -8,10 +8,11 @@ import { PlanValidity } from "@/components/sections/PlanValidity";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
+import { HomeWithIntro } from "@/components/sections/HomeWithIntro";
 
 export default function Home() {
   return (
-    <>
+    <HomeWithIntro>
       <Navbar />
       <main>
         <Hero />
@@ -24,6 +25,6 @@ export default function Home() {
         <FAQ />
       </main>
       <Footer />
-    </>
+    </HomeWithIntro>
   );
 }

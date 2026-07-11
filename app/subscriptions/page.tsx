@@ -10,7 +10,7 @@ interface Subscription {
   email: string;
   phone: string;
   plan: string;
-  mealPreference: "veg" | "non-veg";
+  subscriptionType: "weekly" | "monthly";
   startDate: string;
   address: string;
   createdAt: string;
@@ -60,7 +60,7 @@ export default function SubscriptionsPage() {
               <th>Email</th>
               <th>Phone</th>
               <th>Plan</th>
-              <th>Meal</th>
+              <th>Type</th>
               <th>Start Date</th>
             </tr>
           </thead>
@@ -71,7 +71,7 @@ export default function SubscriptionsPage() {
                 <td>{sub.email}</td>
                 <td>{sub.phone}</td>
                 <td>{sub.plan}</td>
-                <td>{sub.mealPreference}</td>
+                <td>{sub.subscriptionType}</td>
                 <td>{new Date(sub.startDate).toLocaleDateString()}</td>
               </tr>
             ))}

@@ -15,7 +15,7 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
     email: "",
     phone: "",
     plan: "",
-    mealPreference: "non-veg" as "veg" | "non-veg",
+    subscriptionType: "weekly" as "weekly" | "monthly",
     startDate: "",
     address: "",
   });
@@ -48,8 +48,8 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePreferenceChange = (pref: "veg" | "non-veg") => {
-    setFormData((prev) => ({ ...prev, mealPreference: pref }));
+  const handleTypeChange = (type: "weekly" | "monthly") => {
+    setFormData((prev) => ({ ...prev, subscriptionType: type }));
   };
 
   const handleNext = (e: React.FormEvent) => {
@@ -101,7 +101,7 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
   // Generate WhatsApp url with prefilled order text
   const getWhatsAppUrl = () => {
     const hostNumber = "919121538113";
-    const text = `Hi Kayal Meal Box! 🍲\n\nI have requested a subscription on your website. Here are my details:\n\n👤 *Name:* ${formData.name}\n📞 *Phone:* ${formData.phone}\n📧 *Email:* ${formData.email}\n📦 *Plan Selected:* ${formData.plan}\n🌱 *Preference:* ${formData.mealPreference === "veg" ? "Veg Only" : "Veg / Non-Veg"}\n📅 *Start Date:* ${formData.startDate}\n📍 *Delivery Address:* ${formData.address}\n\nPlease confirm my subscription. Thank you!`;
+    const text = `Hi Kayal Meal Box! 🍲\n\nI have requested a subscription on your website. Here are my details:\n\n👤 *Name:* ${formData.name}\n📞 *Phone:* ${formData.phone}\n📧 *Email:* ${formData.email}\n📦 *Plan Selected:* ${formData.plan}\n⏳ *Type:* ${formData.subscriptionType === "weekly" ? "Weekly" : "Monthly"}\n📅 *Start Date:* ${formData.startDate}\n📍 *Delivery Address:* ${formData.address}\n\nPlease confirm my subscription. Thank you!`;
     return `https://wa.me/${hostNumber}?text=${encodeURIComponent(text)}`;
   };
 
@@ -233,19 +233,30 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
 
               <div>
                 <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-2">
-                  Dietary Preference
+                  Subscription Type
                 </label>
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
-                    onClick={() => handlePreferenceChange("non-veg")}
+                    onClick={() => handleTypeChange("weekly")}
                     className={`py-3 px-4 rounded-xl border-2 flex items-center justify-center gap-2 font-bold text-sm transition-all ${
-                      formData.mealPreference === "non-veg"
+                      formData.subscriptionType === "weekly"
                         ? "border-[#FFC503] bg-[#FFF9E6] text-[#0B0C10]"
                         : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50"
                     }`}
                   >
-                    <span>🍗</span> Veg / Non-Veg
+                    <span>📅</span> Weekly Plan
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleTypeChange("monthly")}
+                    className={`py-3 px-4 rounded-xl border-2 flex items-center justify-center gap-2 font-bold text-sm transition-all ${
+                      formData.subscriptionType === "monthly"
+                        ? "border-[#FFC503] bg-[#FFF9E6] text-[#0B0C10]"
+                        : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50"
+                    }`}
+                  >
+                    <span>🗓️</span> Monthly Plan
                   </button>
                 </div>
               </div>
@@ -325,8 +336,8 @@ export function SubscribeModal({ isOpen, onClose, selectedPlanName }: SubscribeM
                 <div><span className="font-bold text-[#0B0C10]">Name:</span> {formData.name}</div>
                 <div><span className="font-bold text-[#0B0C10]">Plan:</span> {formData.plan}</div>
                 <div>
-                  <span className="font-bold text-[#0B0C10]">Preference:</span>{" "}
-                  {formData.mealPreference === "veg" ? "🌱 Veg Only" : "🍗 Veg / Non-Veg"}
+                  <span className="font-bold text-[#0B0C10]">Type:</span>{" "}
+                  {formData.subscriptionType === "weekly" ? "📅 Weekly" : "🗓️ Monthly"}
                 </div>
                 <div><span className="font-bold text-[#0B0C10]">Start Date:</span> {formData.startDate}</div>
                 <div className="line-clamp-2"><span className="font-bold text-[#0B0C10]">Address:</span> {formData.address}</div>

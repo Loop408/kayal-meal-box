@@ -9,7 +9,7 @@ interface Subscription {
   email: string;
   phone: string;
   plan: string;
-  mealPreference: "veg" | "non-veg";
+  subscriptionType: "weekly" | "monthly";
   startDate: string;
   address: string;
   createdAt: string;
@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filterPlan, setFilterPlan] = useState("all");
-  const [filterPref, setFilterPref] = useState("all");
+  const [filterType, setFilterType] = useState("all");
   const [editingSub, setEditingSub] = useState<Subscription | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -108,15 +108,15 @@ export default function AdminDashboard() {
       sub.address.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesPlan = filterPlan === "all" || sub.plan === filterPlan;
-    const matchesPref = filterPref === "all" || sub.mealPreference === filterPref;
+    const matchesType = filterType === "all" || sub.subscriptionType === filterType;
 
-    return matchesSearch && matchesPlan && matchesPref;
+    return matchesSearch && matchesPlan && matchesType;
   });
 
   // Calculate statistics
   const totalCount = subscriptions.length;
-  const vegCount = subscriptions.filter((sub) => sub.mealPreference === "veg").length;
-  const nonVegCount = subscriptions.filter((sub) => sub.mealPreference === "non-veg").length;
+  const weeklyCount = subscriptions.filter((sub) => sub.subscriptionType === "weekly").length;
+  const monthlyCount = subscriptions.filter((sub) => sub.subscriptionType === "monthly").length;
   
   // Calculate plan distribution
   const planCounts = subscriptions.reduce((acc: Record<string, number>, sub) => {
@@ -258,18 +258,18 @@ export default function AdminDashboard() {
           
           {/* Card 2 */}
           <div className="bg-white p-6 rounded-2xl border border-[#0B0C10]/15 shadow-sm">
-            <p className="text-xs font-extrabold text-green-500 uppercase tracking-wider mb-1">
-              🌱 Veg Only
+            <p className="text-xs font-extrabold text-blue-500 uppercase tracking-wider mb-1">
+              📅 Weekly
             </p>
-            <p className="text-3xl font-black text-[#0B0C10]">{vegCount}</p>
+            <p className="text-3xl font-black text-[#0B0C10]">{weeklyCount}</p>
           </div>
 
           {/* Card 3 */}
           <div className="bg-white p-6 rounded-2xl border border-[#0B0C10]/15 shadow-sm">
-            <p className="text-xs font-extrabold text-amber-600 uppercase tracking-wider mb-1">
-              🍗 Veg / Non-Veg
+            <p className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider mb-1">
+              🗓️ Monthly
             </p>
-            <p className="text-3xl font-black text-[#0B0C10]">{nonVegCount}</p>
+            <p className="text-3xl font-black text-[#0B0C10]">{monthlyCount}</p>
           </div>
 
           {/* Card 4 */}
@@ -322,16 +322,16 @@ export default function AdminDashboard() {
               </select>
             </div>
 
-            {/* Preference Filter */}
+            {/* Type Filter */}
             <div>
               <select
-                value={filterPref}
-                onChange={(e) => setFilterPref(e.target.value)}
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
                 className="w-full px-3 py-3 bg-[#FFFBF0] rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
               >
-                <option value="all">All Preferences</option>
-                <option value="veg">🌱 Veg Only</option>
-                <option value="non-veg">🍗 Veg / Non-Veg</option>
+                <option value="all">All Types</option>
+                <option value="weekly">📅 Weekly</option>
+                <option value="monthly">🗓️ Monthly</option>
               </select>
             </div>
           </div>
@@ -394,11 +394,11 @@ export default function AdminDashboard() {
                         <div className="text-[#0B0C10] font-extrabold">{sub.plan.replace(" Plan", "")}</div>
                         <div className="mt-1">
                           <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide ${
-                            sub.mealPreference === "veg"
-                              ? "bg-green-50 text-green-700 border border-green-200"
-                              : "bg-amber-50 text-amber-700 border border-amber-200"
+                            sub.subscriptionType === "weekly"
+                              ? "bg-blue-50 text-blue-700 border border-blue-200"
+                              : "bg-indigo-50 text-indigo-700 border border-indigo-200"
                           }`}>
-                            {sub.mealPreference === "veg" ? "🌱 Veg" : "🍗 Non-Veg"}
+                            {sub.subscriptionType === "weekly" ? "📅 Weekly" : "🗓️ Monthly"}
                           </span>
                         </div>
                       </td>
@@ -521,14 +521,14 @@ export default function AdminDashboard() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Dietary Preference</label>
+                <label className="block text-xs font-extrabold text-[#0B0C10] uppercase tracking-wider mb-1">Subscription Type</label>
                 <select
-                  value={editingSub.mealPreference}
-                  onChange={(e) => setEditingSub({ ...editingSub, mealPreference: e.target.value as "veg" | "non-veg" })}
+                  value={editingSub.subscriptionType}
+                  onChange={(e) => setEditingSub({ ...editingSub, subscriptionType: e.target.value as "weekly" | "monthly" })}
                   className="w-full px-4 py-2 bg-white rounded-xl border border-[#0B0C10]/15 focus:outline-none focus:border-[#FFC503] font-medium text-sm text-[#0B0C10]"
                 >
-                  <option value="veg">🌱 Veg Only</option>
-                  <option value="non-veg">🍗 Veg / Non-Veg</option>
+                  <option value="weekly">📅 Weekly</option>
+                  <option value="monthly">🗓️ Monthly</option>
                 </select>
               </div>
               <div>

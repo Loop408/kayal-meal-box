@@ -9,7 +9,7 @@ interface Subscription {
   email: string;
   phone: string;
   plan: string;
-  mealPreference: "veg" | "non-veg";
+  subscriptionType: "weekly" | "monthly";
   startDate: string;
   address: string;
   createdAt: string;

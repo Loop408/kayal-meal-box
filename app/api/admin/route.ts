@@ -21,7 +21,7 @@ export async function GET() {
       email: sub.email,
       phone: sub.phone,
       plan: sub.plan,
-      mealPreference: sub.meal_preference,
+      subscriptionType: sub.subscription_type,
       startDate: sub.start_date,
       address: sub.address,
       createdAt: sub.created_at
@@ -77,7 +77,7 @@ export async function PUT(request: Request) {
       );
     }
 
-    const { id, name, email, phone, plan, mealPreference, startDate, address } = updatedSub;
+    const { id, name, email, phone, plan, subscriptionType, startDate, address } = updatedSub;
 
     const { data, error } = await supabase
       .from('subscriptions')
@@ -86,7 +86,7 @@ export async function PUT(request: Request) {
         email,
         phone,
         plan,
-        meal_preference: mealPreference,
+        subscription_type: subscriptionType,
         start_date: startDate,
         address
       })
@@ -102,7 +102,7 @@ export async function PUT(request: Request) {
       email: data.email,
       phone: data.phone,
       plan: data.plan,
-      mealPreference: data.meal_preference,
+      subscriptionType: data.subscription_type,
       startDate: data.start_date,
       address: data.address,
       createdAt: data.created_at

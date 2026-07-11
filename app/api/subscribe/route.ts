@@ -4,10 +4,10 @@ import { supabase } from "@/lib/supabase";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, plan, mealPreference, startDate, address } = body;
+    const { name, email, phone, plan, subscriptionType, startDate, address } = body;
 
     // Validate request data
-    if (!name || !email || !phone || !plan || !mealPreference || !startDate || !address) {
+    if (!name || !email || !phone || !plan || !subscriptionType || !startDate || !address) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
         { status: 400 }
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
           email, 
           phone, 
           plan, 
-          meal_preference: mealPreference, 
+          subscription_type: subscriptionType, 
           start_date: startDate, 
           address 
         }
